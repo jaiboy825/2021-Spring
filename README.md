@@ -124,4 +124,20 @@ target - 번역된 프로그램이 저장되는 공간
 - 스프링은 DispatcherServlet 이 서블릿 클래스로부터 모든 요청을 처리한다.
 - DispatcherServlet 한테 지시를 할 수 있다.
 - 지시는 xml 파일에다가 정해진 형식으로 servlet-context.xml 파일안에 내가 원하는걸 기술해주면 된다
-   
+ 
+### 작업순서
+1. Dto(vo), Data Transfer Object 클래스를 만든다 - 데이터 저장용 디비에 필드명
+2. Dao (Data Access Object) - 모델단, 디비에 데이터 읽고 쓰기
+	인터페이스와 클래스
+3. Service - 모델단(트랜잭션 처리)
+	인터페이스와 클래스
+4. Controller
+5. jsp 만든다
+
+#### board
+1. BoardDto
+2. BoardDao - 인터페이스     
+BoardDaoImpl - 인터페이스 상속받아 구현한 클래스, 일을 한다
+3. BoardService     
+BoardServiceImpl
+4. BoardController
