@@ -58,3 +58,18 @@ void insert()
 }
 ```
 팀장 혼자서 프로그램하고 다른 개발자들이 만들어놓은 소스에 끼워넣기
+
+자바파일들을 한번에 번역해주고 + 알파 지원해주는 유틸
+maven     
+gradle     
+
+maven 파일업로드 - cos.jar, ojdbc14.jar odbc6.jar     
+이전에는 개발자가 인터넷 사이트가서 하나씩 다운받아 설치작업을 했는데     
+너무 힘들다. maven 에서 repository 라는 사이트를 만들어서      
+필요한 라이브러리를 repository 라는곳에 모아놓고    
+필요할때 다운받아 쓸 수 있게 만들어놨음       
+다운이 필요한 라이브러리 정보를 xml 파일에 기술하면 다운받아준다.   
+pom.xml 파일이 있다.     
+
+1. pom.xml 파일부터 
+[https://mvnrepository.com/](https://mvnrepository.com/)
