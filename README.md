@@ -23,7 +23,7 @@ Spring 폴더 아래에 stsbundle, 그 아래에 STS.exe
 
 ## 1. DI와 AOP 개념
 ### DI(Dependency Injection) - 의존성 주입, IoC(제어 역행)
-```
+``` java
 class Message{
    Message m = new Message(); // 내가 직접 객체 생성
    m.hello
@@ -39,7 +39,7 @@ class Message{
 스프링 프레임워크는 객체 관리를 프레임워크가 한다.     
 원리는 인터페이스를 이용해서 객체간의 관계를 약하게 해서 (결합 약하게) 객체를 프레임워크가 만들어서 내가 클래한테 전달하는 구조     
 
-```
+``` java
 class Hello {
   Message m; // 스프링이 객체를 만들어서 넣어준다. 
   //1.xml 파일을 가지고 (스프링 처음부터)
@@ -50,7 +50,7 @@ class Hello {
 공통의 관심사가 있다. 로긴, 로그, 트랙잭션 처링 등을 별도의 요소로 뽑아내서     
 프로그램을 횡단해서 중간 중간 끼워넣기를 한다.
 
-```
+``` java
 @Transactional
 void insert() 
 {
@@ -71,5 +71,57 @@ maven 파일업로드 - cos.jar, ojdbc14.jar odbc6.jar
 다운이 필요한 라이브러리 정보를 xml 파일에 기술하면 다운받아준다.   
 pom.xml 파일이 있다.     
 
-1. pom.xml 파일부터 
+1. pom.xml 파일부터    
 [https://mvnrepository.com/](https://mvnrepository.com/)
+run ass - maven install
+하면다 다운받아준다
+
+src -프로그램을 한다  
+- main : 여기가 작업하는 공간
+- java : 자바 소스 놓는곳
+- resources : 각종 설정파일들, xml 파일들
+- web : jsp 파일 두는곳, js, html, css
+- WEB-INF > views > jsp파일들
+- test  
+target - 번역된 프로그램이 저장되는 공간
+
+2. web.xml 파일의 역할
+``` 
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+   
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+```
+- 스프링은 DispatcherServlet 이 서블릿 클래스로부터 모든 요청을 처리한다.
+- DispatcherServlet 한테 지시를 할 수 있다.
+- 지시는 xml 파일에다가 정해진 형식으로 servlet-context.xml 파일안에 내가 원하는걸 기술해주면 된다
+   
