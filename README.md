@@ -141,3 +141,16 @@ BoardDaoImpl - 인터페이스 상속받아 구현한 클래스, 일을 한다
 3. BoardService     
 BoardServiceImpl
 4. BoardController
+
+##### 설명
+스프링 서버가 올라갈떄 @Controller, @Service, @Repository가 써있는 모든 클래스를 찾아서 객체를 만든다 (하나만 만들어서 돌려쓴다)      
+싱글톤으로 만들어져요     
+각 객체간에 @Resource 를 찾아서 서로 연결작업을 한다 (DI, 의존성 주입)     
+@RequestMapping 을 찾아서 url과 연결된 컨트롤러 정보를 모두 프레임워크 안에 저장해 놓는다.    
+그래서 클래스가 서로 달라도 @RequestMapping(value="url") 쓸 때 url이 충돌나면 안된다.    
+##### 브라우저 -> 서버로 요청을 한다 
+DispatchServlet 가 받아서 처리한다. (web.xml 파일에 기술되어 있다)      
+해당 url이 어떤 컨트롤러와 연결해야 하는지 찾아서 컨트롤러 객체한테 모든 정보를 전달한다.      
+컨트롤러 -> 서비스 (일을 맡긴다) -> Dao 한테 데이터를 DB에 넣거나 DB에서 가져오거나 작업을 진행      
+컨트롤러 -> 서비스 DAO -> 서비스 ->      
+컨트롤러는 가져온 저보를 view(jsp)페이지한테 전달한다. (Model을 통해서 전달한다)
