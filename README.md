@@ -154,3 +154,12 @@ DispatchServlet 가 받아서 처리한다. (web.xml 파일에 기술되어 있�
 컨트롤러 -> 서비스 (일을 맡긴다) -> Dao 한테 데이터를 DB에 넣거나 DB에서 가져오거나 작업을 진행      
 컨트롤러 -> 서비스 DAO -> 서비스 ->      
 컨트롤러는 가져온 저보를 view(jsp)페이지한테 전달한다. (Model을 통해서 전달한다)
+##### DB 커넥션 풀 -> DB가 연결 -> 읽기 또는 쓰기 -> 연결을 끊는다
+데이터 읽고 쓰기 보다 연결과 연결 끊기가 좀 더 시간이 오래 걸린다.      
+미리 DB연결을 많이 만들어놓는다     <- 이걸 돌려쓰기 한다.
+
+##### 계정만들기 
+1. conn system/1234
+2. create user user01 identified by 1234;
+3. grant connect, resource to user01;
+4. conn user01/1234;
