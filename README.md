@@ -163,3 +163,23 @@ DispatchServlet 가 받아서 처리한다. (web.xml 파일에 기술되어 있�
 2. create user user01 identified by 1234;
 3. grant connect, resource to user01;
 4. conn user01/1234;
+#### sql
+``` sql
+create table board( id number primary key , title varchar2(30), writer varchar2(30), wdate date, contents varchar(100));
+insert into board values (1, '제목1', '작성자1', sysdate, '내용1');
+insert into board values (2, '제목2', '작성자2', sysdate, '내용2');
+insert into board values (3, '제목3', '작성자3', sysdate, '내용3');
+insert into board values (4, '제목4', '작성자4', sysdate, '내용4');
+insert into board values (5, '제목5', '작성자5', sysdate, '내용5');
+insert into board values (11, '제목1', '작성자1', sysdate, '내용1');
+insert into board values (12, '제목2', '작성자2', sysdate, '내용2');
+insert into board values (13, '제목3', '작성자3', sysdate, '내용3');
+insert into board values (14, '제목4', '작성자4', sysdate, '내용4');
+insert into board values (15, '제목5', '작성자5', sysdate, '내용5');
+insert into board values (16, '제목1', '작성자1', sysdate, '내용1');
+insert into board values (17, '제목2', '작성자2', sysdate, '내용2');
+insert into board values (18, '제목3', '작성자3', sysdate, '내용3');
+insert into board values (19, '제목4', '작성자4', sysdate, '내용4');
+insert into board values (20, '제목5', '작성자5', sysdate, '내용5');
+commit;
+```
