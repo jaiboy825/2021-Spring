@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd ">
+ 
+<mapper namespace="Board">
+
+    <select id = "Board_getList" resultType="BoardDto">
+    select * from board
+    </select>
+
+    <!-- parameterType 의 경우는 insert 하려면 form 태그에서 전달된 값을 받아와서
+         insert 쿼리에 전달할 개체에 대한 정보 -->
+    <insert id="Board_insert" parameterType="BoardDto">
+    <!-- 선행쿼리 이걸 먼저 실행하고 결과를 받아서 다음 쿼리를 실행한다.
+         selectKey 로 시작해서 resultType:결과타입
+         keyProperty: 결과를 받아와서 저장 할 변수명,
+         order:BEFORE 먼저 실행해라. -->
+    <selectKey resultType="String" keyProperty="id" order="BEFORE">
+    select nvl(max(id),0)+1 as id
+    from board
+    </selectKey>
+        insert into board
+        (
+            id,
+            title,
+            contents,
+            writer,
+            wdate
+        )
+        values
+        (
+            #{id},
+            #{title},
+            #{contents},
+            #{writer},
+            sysdate
+        )
+    </insert>
+</mapper>
