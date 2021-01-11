@@ -183,3 +183,18 @@ insert into board values (19, '제목4', '작성자4', sysdate, '내용4');
 insert into board values (20, '제목5', '작성자5', sysdate, '내용5');
 commit;
 ```
+
+```
+create table freeboard 
+(
+    id number(11) primary key, 
+    title varchar2(300), 
+    writer varchar2(40),
+    hit number,
+    wdate date,
+    delyn char(1),
+    contents clob
+);
+insert into freeboard (id, title, wdate)
+values(1, '제목1',  sysdate);
+```
