@@ -184,7 +184,7 @@ insert into board values (20, '제목5', '작성자5', sysdate, '내용5');
 commit;
 ```
 
-```
+``` sql
 create table freeboard 
 (
     id number(11) primary key, 
@@ -195,6 +195,18 @@ create table freeboard
     delyn char(1),
     contents clob
 );
+
+
 insert into freeboard (id, title, wdate)
 values(1, '제목1',  sysdate);
+
+-- row_number() 라는 분석함수를 이용해서 페이징을 해보자
+select id, title , row_number() over(order by id desc) as num from freeboard;
+select id, title , row_number() over(order by id desc) as num, row_number() over(order by id desc) / 3 from freeboard;
+
+1 2 3 - 1 몫 1
+4 5 6 - 2
+7 8 9 - 3
+
+ceil - 무조건 올림 0.1,0.2,0.9 ---> 1
 ```
